@@ -24,7 +24,8 @@ double pegaDouble() {
             return numero;
         } else {
             printf("Favor informar um número válido! ");
-            while (getchar() != '\n'); // Limpa o buffer de entrada
+
+            while (getchar() != '\n');
         }
     }
 }
