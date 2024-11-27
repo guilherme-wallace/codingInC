@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-// Metodo Babilonico
 double met_babi(double numero) {
     if (numero == 0) {
         return 0;
@@ -18,7 +17,6 @@ double met_babi(double numero) {
     return x;
 }
 
-// Pega numero e verifica se é decimal
 double pegaDouble() {
     double numero;
     while (1) {
