@@ -4,17 +4,17 @@ double met_babi(double numero) {
     if (numero == 0) {
         return 0;
     }
-    double x = numero / 2.0;
+    double nvNumero = numero / 2.0;
     double aux;
     while (1) {
-        aux = x;
-        x = (x + numero / x) / 2.0;
+        aux = nvNumero;
+        nvNumero = (nvNumero + numero / nvNumero) / 2.0;
 
-        if ((aux - x < 0.00001) && (x - aux < 0.00001)) {
+        if ((aux - nvNumero < 0.00001) && (nvNumero - aux < 0.00001)) {
             break;
         }
     }
-    return x;
+    return nvNumero;
 }
 
 double pegaDouble() {
