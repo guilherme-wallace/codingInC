@@ -14,7 +14,7 @@ double met_babi(double numero) {
             break;
         }
     }
-    return ((int)(nvNumero * 100 + 0.5)) / 100.0;
+     return ((int)(nvNumero * 100 + 0.5)) / 100.0;
 }
 
 double pegaDouble() {
