@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 // Faz o MMC entre 2 numeros
 int mmc(int priNum, int segNum) {
@@ -49,7 +50,14 @@ int main() {
         return 1;
     }
 
-    int numeros[qtdNum];
+    // Alocação dinâmica do array
+    // substitui o int numeros[qtdNum];
+    int *numeros = (int *)malloc(qtdNum * sizeof(int));
+    if (numeros == NULL) {
+        printf("Erro ao alocar memória.\n");
+        return 1;
+    }
+
     printf("Digite os %d numeros:\n", qtdNum);
     printf("Obs: A cada numero inserido aperte Enter. \n\n");
     for (int i = 0; i < qtdNum; i++) {
@@ -58,6 +66,9 @@ int main() {
 
     int resultado = arrayMMC(numeros, qtdNum);
     printf("O MMC desses numeros e: %d\n", resultado);
+
+    // Liberar a memória alocada
+    free(numeros);
 
     return 0;
 }
