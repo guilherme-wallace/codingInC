@@ -2,12 +2,11 @@
 #include <string.h>
 #include <ctype.h>
 
-#define MAX_LETTERS 20 // Número máximo de letras na palavra
-#define LETTER_HEIGHT 5 // Altura das letras
-#define LETTER_WIDTH 5  // Largura das letras
+#define MAX_LETTERS 20
+#define ALTURA_DA_LETRA 5
+#define LARGURA_DA_LETRA 5
 
-// Tabela de caracteres para letras de A a Z
-const char LETTERS[26][LETTER_HEIGHT][LETTER_WIDTH + 1] = {
+const char LETTERS[26][ALTURA_DA_LETRA][LARGURA_DA_LETRA + 1] = {
     {"  #  ", " # # ", "#####", "#   #", "#   #"}, // A
     {"#### ", "#   #", "#### ", "#   #", "#### "}, // B
     {" ####", "#    ", "#    ", "#    ", " ####"}, // C
@@ -36,15 +35,13 @@ const char LETTERS[26][LETTER_HEIGHT][LETTER_WIDTH + 1] = {
     {"#####", "   # ", "  #  ", " #   ", "#####"}  // Z
 };
 
-// Captura a ltra de acondo com o indice da tabela (A=0, B=1, ... Z=25)
 int char_to_index(char c) {
     return toupper(c) - 'A';
 }
 
-// Imprimir a palavra usando a converção. 
 void print_led_word(const char *word) {
     int length = strlen(word);
-    for (int row = 0; row < LETTER_HEIGHT; row++) {
+    for (int row = 0; row < ALTURA_DA_LETRA; row++) {
         for (int i = 0; i < length; i++) {
             int index = char_to_index(word[i]);
             if (index < 0 || index >= 26) {
