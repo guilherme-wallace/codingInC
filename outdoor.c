@@ -2,11 +2,11 @@
 #include <string.h>
 #include <ctype.h>
 
-#define MAX_LETTERS 20
-#define ALTURA_DA_LETRA 5
-#define LARGURA_DA_LETRA 5
+#define MAX_LETRAS 20
+#define ALTURA_LETRA 5
+#define LARGURA_LETRA 5
 
-const char LETTERS[26][ALTURA_DA_LETRA][LARGURA_DA_LETRA + 1] = {
+const char LETRAS[26][ALTURA_LETRA][LARGURA_LETRA + 1] = {
     {"  #  ", " # # ", "#####", "#   #", "#   #"}, // A
     {"#### ", "#   #", "#### ", "#   #", "#### "}, // B
     {" ####", "#    ", "#    ", "#    ", " ####"}, // C
@@ -35,19 +35,19 @@ const char LETTERS[26][ALTURA_DA_LETRA][LARGURA_DA_LETRA + 1] = {
     {"#####", "   # ", "  #  ", " #   ", "#####"}  // Z
 };
 
-int char_to_index(char c) {
+int caractere_para_indice(char c) {
     return toupper(c) - 'A';
 }
 
-void print_led_word(const char *word) {
-    int length = strlen(word);
-    for (int row = 0; row < ALTURA_DA_LETRA; row++) {
-        for (int i = 0; i < length; i++) {
-            int index = char_to_index(word[i]);
-            if (index < 0 || index >= 26) {
+void exibir_palavra_led(const char *palavra) {
+    int tamanho = strlen(palavra);
+    for (int linha = 0; linha < ALTURA_LETRA; linha++) {
+        for (int i = 0; i < tamanho; i++) {
+            int indice = caractere_para_indice(palavra[i]);
+            if (indice < 0 || indice >= 26) {
                 printf("N/A");
             } else {
-                printf("%s ", LETTERS[index][row]);
+                printf("%s ", LETRAS[indice][linha]);
             }
         }
         printf("\n");
@@ -55,22 +55,22 @@ void print_led_word(const char *word) {
 }
 
 int main() {
-    char word[MAX_LETTERS + 1];
-    int valid;
+    char palavra[MAX_LETRAS + 1];
+    int valido;
     do {
-        valid = 1;
-        printf("Digite uma palavra de no máximo %d letras, apenas de A-Z): ", MAX_LETTERS);
-        scanf("%s", word);
-        for (int i = 0; word[i] != '\0'; i++) {
-            if (!isalpha(word[i])) {
-                valid = 0;
+        valido = 1;
+        printf("Digite uma palavra de no máximo %d letras, apenas de A-Z: ", MAX_LETRAS);
+        scanf("%s", palavra);
+        for (int i = 0; palavra[i] != '\0'; i++) {
+            if (!isalpha(palavra[i])) {
+                valido = 0;
                 printf("Erro: A palavra deve conter apenas letras de A-Z.\n");
                 break;
             }
         }
-    } while (!valid);
+    } while (!valido);
     
-    print_led_word(word);
+    exibir_palavra_led(palavra);
     
     return 0;
 }
