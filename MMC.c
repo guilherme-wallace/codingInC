@@ -1,5 +1,18 @@
 #include <stdio.h>
 
+// Pega o número digitado e confere se ele é inteiro
+int pegaInteiro() {
+    int numero;
+    while (1) {
+        if (scanf("%d", &numero) == 1) {
+            return numero;
+        } else {
+            printf("Favor informar um número inteiro! \n");
+            while (getchar() != '\n');
+        }
+    }
+}
+
 int mmc(int a, int b) {
     int m = a > b ? a : b;
     while (m % a || m % b) m++;
@@ -27,13 +40,14 @@ void primos(int num) {
 int main() {
     int qtd;
     printf("Quantos números? ");
-    scanf("%d", &qtd);
+    qtd = pegaInteiro();
     if (qtd < 2) return 1;
 
     int nums[qtd];
-    printf("Digite os números: ");
-    for (int i = 0; i < qtd; i++)
-        scanf("%d", &nums[i]);
+    printf("Digite os números: \n");
+    for (int i = 0; i < qtd; i++) {
+        nums[i] = pegaInteiro();
+    }
 
     int resultado = calculaMMC(nums, qtd);
     printf("O MMC é: %d\n", resultado);
