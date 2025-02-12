@@ -14,9 +14,9 @@ int pegaInteiro() {
 }
 
 int mmc(int a, int b) {
-    int m = a > b ? a : b;
-    while (m % a || m % b) m++;
-    return m;
+    int maior = a > b ? a : b;
+    while (maior % a || maior % b) maior++;
+    return maior;
 }
 
 int calculaMMC(int *nums, int n) {
