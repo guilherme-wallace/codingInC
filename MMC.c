@@ -25,12 +25,12 @@ int calculaMMC(int *listaNumeros, int n) {
     return resultado;
 }
 
-void ehPrimos(int numeroP) {
+void ehPrimos(int resultadoP) {
     printf("O fator é: ");
-    for (int i = 2; numeroP > 1; i++) {
-        while (numeroP % i == 0) {
+    for (int i = 2; resultadoP > 1; i++) {
+        while (resultadoP % i == 0) {
             printf("%d ", i);
-            numeroP /= i;
+            resultadoP /= i;
         }
     }
     printf("\n");
