@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-// Pega o número digitado e confere se ele é inteiro
 int pegaInteiro() {
     int numero;
     while (1) {
@@ -19,19 +18,19 @@ int mmc(int a, int b) {
     return maior;
 }
 
-int calculaMMC(int *nums, int n) {
-    int res = nums[0];
+int calculaMMC(int *listaNumeros, int n) {
+    int resultado = listaNumeros[0];
     for (int i = 1; i < n; i++)
-        res = mmc(res, nums[i]);
-    return res;
+        resultado = mmc(resultado, listaNumeros[i]);
+    return resultado;
 }
 
-void primos(int num) {
-    printf("Os primos são: ");
-    for (int i = 2; num > 1; i++) {
-        while (num % i == 0) {
+void ehPrimos(int numeroP) {
+    printf("O fator é: ");
+    for (int i = 2; numeroP > 1; i++) {
+        while (numeroP % i == 0) {
             printf("%d ", i);
-            num /= i;
+            numeroP /= i;
         }
     }
     printf("\n");
@@ -41,17 +40,16 @@ int main() {
     int qtd;
     printf("Quantos números? ");
     qtd = pegaInteiro();
-    if (qtd < 2) return 1;
 
-    int nums[qtd];
+    int listaNumeros[qtd];
     printf("Digite os números: \n");
     for (int i = 0; i < qtd; i++) {
-        nums[i] = pegaInteiro();
+        listaNumeros[i] = pegaInteiro();
     }
 
-    int resultado = calculaMMC(nums, qtd);
+    int resultado = calculaMMC(listaNumeros, qtd);
     printf("O MMC é: %d\n", resultado);
-    primos(resultado);
+    ehPrimos(resultado);
     
     return 0;
 }
